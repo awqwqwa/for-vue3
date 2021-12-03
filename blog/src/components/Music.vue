@@ -1,0 +1,77 @@
+<template>
+    <div id="music" v-show="bool">
+        <div id:="secrchMusic" >
+            <input type="text" v-model="name" placeholder="(点小鱼有惊喜)" @keyup.enter="search">
+            <input type="button" value="搜索音乐" @click="search">
+        </div>
+        <ul >
+            <li v-for="data in arr" :key="data.id">
+                <div><img src="../assets/icon/e10.png" alt="" @click="play(data.id)"><b>{{data.name}}</b></div>
+            </li>
+        </ul>  
+    </div>
+    <audio ref='audio' :src="http" controls="controls" autoplay="autoplay" loop="loop" height="100" width="100"></audio>
+</template>
+<script>
+export default {
+    name: "for-music",
+    props:[
+        'bool'
+    ],
+    data(){
+        return{
+        http:"",
+        arr:[],
+        }
+    },
+    methods:{
+        search(){
+            var that=this;
+            axios.get("https://autumnfish.cn/search?keywords="+this.name)
+            .then(
+                function(a){
+                    console.log(a);
+                    that.arr=a.data.result.songs;
+                }
+            )
+        },
+        play:function(id){
+            console.log(id);
+            this.http="https://music.163.com/song/media/outer/url?id="+id+".mp3"
+            console.log(this.http);    
+            }
+        }
+}
+</script>
+<style lang="css">
+*{margin: 0; padding: 0; list-style-type: none; text-decoration: none}
+#music{
+    margin: 10px;
+    width: 500px;
+    height: 1000px;
+    display: inline-block ;
+    border: 1px solid black;
+    padding:25px;
+    border-radius: 30px;
+    background:url("../assets/background/IMG_20211124_172334.jpg");
+}
+#searchmusic{
+    margin-left: 100px;
+}
+#music ul{
+    padding-left: 75px;
+}
+#music ul li b{
+    color:cyan;
+}
+#music ul li div img{
+    width: 18px;
+    height: 18px;
+}
+audio{
+    position: fixed;
+    right:10px;
+    top: 90px;
+
+}
+</style>

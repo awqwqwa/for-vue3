@@ -1,5 +1,58 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+    <div id="app">
+        <img :src="arr[index]" alt="" @click="doit">
+    </div>
+    <div id="intro" >
+        <h3>基本资料</h3>
+        <p style="margin-top: 20px;">生物类型：xxx</p>
+        <p>性别：xxx</p>
+        <p>食性：xxx</p>
+        <p>身高：xxx</p>
+        <p>体重：xxx</p>
+        <p>特征：无</p>
+    </div>
 </template>
+
+<script>
+export default {
+    el:"#app",
+    data(){
+        return{
+            index:0,
+            arr:["../assets/ys/56ab1b0f7bec54e77c912955ae389b504ec26a95.gif","../assets/ys/d458dfd88d1001e9730c2044af0e7bec55e797da.jpg","../assets/ys/eb167259ccbf6c816e8895a5ab3eb13532fa4052.jpg","../assets/ys/f2a146dce71190efa49d2f92d91b9d16fcfa60ab.jpg"],
+        }
+    },
+    methods:{
+        doit(){
+            if(this.index<3){
+                this.index++;
+            }else{this.index=0;}
+        }
+    }
+}
+</script>
+<style>
+#intro{
+    position: absolute;
+    display: block;
+    margin: auto;
+    height: 400px;
+    width: 600px;
+    border: 3px solid rgb(61, 162, 245);
+    background-image:url(../assets/background/apic27286.jpg);
+    background-repeat: no-repeat;
+}
+img{
+    display: inline;
+    width: 20%;
+}
+#intro h3{
+    color: aqua;
+    padding-top: 75px;
+    padding-left: 250px;
+}
+#intro p{
+    color: rgb(2, 15, 11);
+    padding-left: 75px;
+}
+</style>
