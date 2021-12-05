@@ -1,17 +1,17 @@
 <template>
     <img src="./assets/top.png" alt=""  style="padding: 0px;margin: 0px;width:100%;">
     <div id="pointer">
-        <router-link to="/" @click="show">
-            <h5 class="guiding">首页</h5>
+        <router-link to="/" @click="show" >
+            <h5 class="guiding" >首页</h5>
         </router-link>
-        <router-link to="/message" @click="hide">
-            <h5 class="guiding">文章</h5>
+        <router-link to="/message" @click="hide" >
+            <h5 class="guiding" >文章</h5>
         </router-link>
         <router-link to="/talking" @click="hide">
-            <h5 class="guiding">留言</h5>
+            <h5 class="guiding" >留言</h5>
         </router-link>
         <router-link to="/about" @click="hide">
-            <h5 class="guiding">关于我</h5>
+            <h5 class="guiding" >关于我</h5>
         </router-link>   
     </div>
     <router-view>
@@ -25,7 +25,7 @@ export default {
     name: 'Home',
     data(){
         return{
-        thebool:true
+        thebool:true,
         }
     },
     components: {
@@ -37,7 +37,7 @@ export default {
         },
         show(){
             this.thebool=true;
-        }
+        },
     }
 }
 </script>
@@ -59,5 +59,8 @@ export default {
 }
 .guiding:hover {
   background-color: rgb(15, 100, 134);
+}
+.router-link-active h5{/*router-link自带类以实现点击 */
+    background-color: rgb(28, 161, 161);
 }
 </style>
