@@ -20,7 +20,7 @@ export default {
         show(){
             var that=this;
             this.bool=false;
-            axios.get("http://jsonplaceholder.typicode.com/posts")
+            axios.get("http://jsonplaceholder.typicode.com/posts")//http://jsonplaceholder.typicode.com/posts
             .then(
                 function(a){
                     console.log(a);
