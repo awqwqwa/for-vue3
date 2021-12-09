@@ -18,24 +18,20 @@
     </div>
 </template>
 
-<script>
-export default {
-    data(){
-        return{
-            message:"这里可以输入你的备忘录",
-            num:0,
-            arr:[""],
-        }  
-    },
-    methods:{
-        add(){ 
-            this.arr.push(this.message);
-        },
-        del(){
-            this.arr.splice(this.num,1);
-        },
-    }
-}
+<script setup>
+import {ref} from 'vue';
+
+    let message = ref("这里可以输入你的备忘录");
+    let num = ref(0);
+    let arr = ref([""]);
+
+    let add = () => { 
+            arr.value.push(message);
+        };
+    let del = () => {
+            arr.value.splice(num,1);
+        }
+
 </script>
 <style>
 #textbook{
@@ -81,5 +77,25 @@ export default {
 #showlist ul li{
     padding: 2px 0px;
 }
-
+/*
+<script >
+export default {
+    data(){
+        return{
+            message:"这里可以输入你的备忘录",
+            num:0,
+            arr:[""],
+        }  
+    },
+    methods:{
+        add(){ 
+            this.arr.push(this.message);
+        },
+        del(){
+            this.arr.splice(this.num,1);
+        },
+    }
+}
+</script>
+*/
 </style>

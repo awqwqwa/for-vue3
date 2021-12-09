@@ -5,25 +5,21 @@
     </div>
 </template>
 
-<script>
-export default {
-    data(){
-        return{
-            joke:"点击上面看笑话哦",
-        }
-        },
-        methods:{
-            get(){
-                var that=this;
-                axios.get("https://autumnfish.cn/api/joke").then
-                (function(a){
-                    that.joke=a.data;
+<script setup>
+import {ref} from 'vue';
+    const joke=ref("点击上面看笑话哦");
+
+
+    const get = () =>{
+                axios.get("https://autumnfish.cn/api/joke")
+                .then(function(a){
+                    joke.value=a.data;
                     //this.joke=a.data;这里无法直接赋值，要改变this指向
                 }
                 )
-            }
-        },
-}
+    }
+
+
 </script>
 <style>
 #joke{

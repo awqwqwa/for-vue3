@@ -19,20 +19,15 @@
         </div>
     </div>
 </template>
-<script>
-export default {
-    data(){
-        return{
-            title:"",
-            message:"",
-            author:"",
-        }
-    },
-    methods:{
-        push(){//可以实现上传数据，但没有服务器....而且尝试用本地json，但失败了
-            var that=this;
+<script setup>
+import {ref} from 'vue';
+    const title=ref("");
+    const message=ref("");
+    const author=ref("");
+
+    const push=()=>{//可以实现上传数据，但没有服务器....而且尝试用本地json，但失败了
             axios.post("http://jsonplaceholder.typicode.com/posts",{//http://jsonplaceholder.typicode.com/posts
-                title:that.title,body:that.message,userId:1
+                title:title.value,body:message.value,userId:1
             })
             .then(
                 function(a){
@@ -40,8 +35,7 @@ export default {
                 }
             )
         }
-    }
-}
+
 </script>
 <style>
 #upload input[type=text] {

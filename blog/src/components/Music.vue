@@ -12,36 +12,31 @@
     </div>
     <audio ref='audio' :src="http" controls="controls" autoplay="autoplay" loop="loop" height="100" width="100"></audio>
 </template>
-<script>
-export default {
-    name: "for-music",
-    props:[
-        'bool'
-    ],
-    data(){
-        return{
-        http:"",
-        arr:[],
-        }
-    },
-    methods:{
-        search(){
-            var that=this;
-            axios.get("https://autumnfish.cn/search?keywords="+this.name)
+<script setup>
+import {ref,defineProps} from 'vue';
+    const props = defineProps({
+        bool:Boolean,//通过这种方式定义prop
+    });
+
+    const http=ref("");
+    const arr=ref([]);
+    const name=ref("");
+
+    const search=()=>{
+            axios.get("https://autumnfish.cn/search?keywords="+name.value)
             .then(
                 function(a){
                     console.log(a);
-                    that.arr=a.data.result.songs;
+                    arr.value=a.data.result.songs;
                 }
             )
-        },
-        play:function(id){
+        };
+    const play=(id)=>{
             console.log(id);
-            this.http="https://music.163.com/song/media/outer/url?id="+id+".mp3"
-            console.log(this.http);    
+            http.value="https://music.163.com/song/media/outer/url?id="+id+".mp3"
+            console.log(http.value);    
             }
-        }
-}
+
 </script>
 <style lang="css">
 *{margin: 0; padding: 0; list-style-type: none; text-decoration: none}

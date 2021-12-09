@@ -14,28 +14,21 @@
         </ul>
     </div>
 </template>
-<script>
-export default {
-    data(){
-        return{
-            city:"北京",
-            arr:[],
-        }
-    },
-    methods:{            
-        getweather(city){
-            var that=this;
-            axios.get("http://wthrcdn.etouch.cn/weather_mini?city="+this.city)
-            .then(
-                function(a){
-                    that.arr=a.data.data.forecast;
-                    console.log(that.arr);//控制台查看
-                }
-            )
-            this.city="";
+<script setup>
+import {ref,getCurrentInstance} from 'vue';
+    const city=ref("北京");
+    const arr=ref([]);
+
+    let getweather = (city) => {
+        axios.get("http://wthrcdn.etouch.cn/weather_mini?city="+city)
+        .then(
+            function(a){
+                arr.value=a.data.data.forecast;
+                console.log(arr.value);//控制台查看
+            }
+        )
         }    
-    }
-}
+
 </script>
 
 <style>
