@@ -21,22 +21,27 @@
 </template>
 <script setup>
 import {ref} from 'vue';
-    const title=ref("");
-    const message=ref("");
-    const author=ref("");
+    const title = ref("");
 
-    const push=()=>{//可以实现上传数据，但没有服务器....而且尝试用本地json，但失败了
-            axios.post("http://jsonplaceholder.typicode.com/posts",{//http://jsonplaceholder.typicode.com/posts
-                title:title.value,body:message.value,userId:1
-            })
-            .then(
-                function(a){
-                    console.log(a);
-                }
-            )
-        }
+    const message = ref("");
+
+    const author = ref("");
+
+    const push = () => {
+        axios.post("http://jsonplaceholder.typicode.com/posts",{
+            title:title.value,
+            body:message.value,
+            userId:1
+        })
+        .then(
+            res => {
+                console.log(res);
+            }
+        )
+    }
 
 </script>
+
 <style>
 #upload input[type=text] {
     width: 50%;

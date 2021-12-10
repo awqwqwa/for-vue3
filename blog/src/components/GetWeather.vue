@@ -16,18 +16,20 @@
 </template>
 <script setup>
 import {ref,getCurrentInstance} from 'vue';
+
     const city=ref("北京");
+
     const arr=ref([]);
 
     let getweather = (city) => {
-        axios.get("http://wthrcdn.etouch.cn/weather_mini?city="+city)
+        axios.get("http://wthrcdn.etouch.cn/weather_mini?city=" + city)
         .then(
-            function(a){
-                arr.value=a.data.data.forecast;
+            res => {
+                arr.value = res.data.data.forecast;
                 console.log(arr.value);//控制台查看
             }
-        )
-        }    
+        );
+    }
 
 </script>
 

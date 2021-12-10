@@ -19,25 +19,29 @@ import {ref,defineProps} from 'vue';
     });
 
     const http=ref("");
+
     const arr=ref([]);
+
     const name=ref("");
 
-    const search=()=>{
-            axios.get("https://autumnfish.cn/search?keywords="+name.value)
-            .then(
-                function(a){
-                    console.log(a);
-                    arr.value=a.data.result.songs;
-                }
-            )
-        };
-    const play=(id)=>{
-            console.log(id);
-            http.value="https://music.163.com/song/media/outer/url?id="+id+".mp3"
-            console.log(http.value);    
+    const search = () => {
+        axios.get("https://autumnfish.cn/search?keywords=" + name.value)
+        .then(
+            res => {
+                console.log(res);
+                arr.value = res.data.result.songs;
             }
+        );
+    };
+    
+    const play = (id) => {
+        console.log(id);
+        http.value = "https://music.163.com/song/media/outer/url?id="+ id +".mp3";
+        console.log(http.value);    
+    }
 
 </script>
+
 <style lang="css">
 *{margin: 0; padding: 0; list-style-type: none; text-decoration: none}
 #music{

@@ -11,19 +11,21 @@
 <script setup>
 import {ref} from 'vue';
 
-        const arr=ref([]);
-        const bool=ref(true);
+    const arr = ref([]);
 
-        const show=()=>{
-            bool.value=false;
-            axios.get("http://jsonplaceholder.typicode.com/posts")//http://jsonplaceholder.typicode.com/posts
-            .then(
-                function(a){
-                    console.log(a);
-                    arr.value=a.data;
-                }
-            )
-        };
+    const bool = ref(true);
+
+    const show = () => {
+        bool.value = false;
+        axios.get("http://jsonplaceholder.typicode.com/posts")
+        .then(
+            res => {
+                console.log(res);
+                arr.value = res.data;
+            }
+        )
+    }
+    
 </script>
 
 <style>

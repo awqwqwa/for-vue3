@@ -21,18 +21,22 @@
 <script setup>
 import {ref} from 'vue';
 
-    let message = ref("这里可以输入你的备忘录");
-    let num = ref(0);
-    let arr = ref([""]);
+    const message = ref("这里可以输入你的备忘录");
 
-    let add = () => { 
+    const num = ref(0);
+
+    const arr = ref([""]);
+
+    const add = () => { 
             arr.value.push(message);
-        };
-    let del = () => {
+    };
+
+    const del = () => {
             arr.value.splice(num,1);
-        }
+    }
 
 </script>
+
 <style>
 #textbook{
     height: 580px;

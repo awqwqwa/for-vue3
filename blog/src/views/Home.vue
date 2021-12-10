@@ -6,17 +6,9 @@
     </div>
 </template>
 
-<script>
-// @ is an alias to /src
+<script setup>
 import Textbook from '../components/Textbook.vue'
 import GetWeather from '../components/GetWeather.vue'
 import Joke from '../components/Joke.vue'
 
-export default {
-    components: {
-        Textbook,
-        GetWeather,
-        Joke
-    }
-}
 </script>

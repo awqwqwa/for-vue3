@@ -17,33 +17,32 @@
 
     </div>
 </template>
-<script>
-export default {
-    data(){
-        return{
-            message:{name:"",contain:""},
-            arr:[{}]
-        }            
-    },
-    methods:{
-        sent(){
-            if(this.message.name==""){
-                alert("请输入用户名")
-            }else{
-                this.arr.push(this.message);
-            }
-            var that=this;
-            axios.post("http://jsonplaceholder.typicode.com/posts",{//http://jsonplaceholder.typicode.com/posts
-            title:that.message.name,body:that.message.contain,userId:1
-            })
-            .then(
-                function(a){
-                    console.log(a);//测试用
-                }
-            )
+<script setup>
+import {ref} from 'vue';
+            
+    const message = ref({
+        name:"",
+        contain:""
+    });
+    
+    const arr = ref([{}]);
+    
+    const sent = () => {
+        if(message.value.name == "") {
+            alert("请输入用户名")
+        }else {
+            arr.value.push(message.value);
         }
+        axios.post("http://jsonplaceholder.typicode.com/posts", {
+            title:message.value.name,
+            body:message.value.contain,
+            userId:1
+        })
+        .then(res => {
+            console.log(res);
+        });
     }
-}
+
 </script>
 <style>
 #lmessage input[type=text] {
