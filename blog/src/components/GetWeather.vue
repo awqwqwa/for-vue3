@@ -1,7 +1,7 @@
 <template>
     <div id="weather">
-        <input type="text" v-model="city" @keyup.enter="getweather(city)">
-        <input type="button" value="查询天气" @click="getweather(city)">
+        <input type="text" v-model="city" @keyup.enter="getWeather(city)">
+        <input type="button" value="查询天气" @click="getWeather(city)">
         <ul>
             <li v-for="item in arr" :key="item.id">
                 <h2>{{item.date}}</h2>
@@ -15,13 +15,13 @@
     </div>
 </template>
 <script setup>
-import {ref,getCurrentInstance} from 'vue';
+import {ref, getCurrentInstance} from 'vue';
 
-    const city=ref("北京");
+    const city = ref("北京");
 
-    const arr=ref([]);
+    const arr = ref([]);
 
-    let getweather = (city) => {
+    let getWeather = (city) => {
         axios.get("http://wthrcdn.etouch.cn/weather_mini?city=" + city)
         .then(
             res => {

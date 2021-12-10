@@ -13,16 +13,17 @@
     <audio ref='audio' :src="http" controls="controls" autoplay="autoplay" loop="loop" height="100" width="100"></audio>
 </template>
 <script setup>
-import {ref,defineProps} from 'vue';
+import {ref, defineProps} from 'vue';
+
     const props = defineProps({
-        bool:Boolean,//通过这种方式定义prop
+        bool: Boolean,//通过这种方式定义prop
     });
 
-    const http=ref("");
+    const http = ref("");
 
-    const arr=ref([]);
+    const arr = ref([]);
 
-    const name=ref("");
+    const name = ref("");
 
     const search = () => {
         axios.get("https://autumnfish.cn/search?keywords=" + name.value)

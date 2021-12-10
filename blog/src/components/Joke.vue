@@ -7,13 +7,14 @@
 
 <script setup>
 import {ref} from 'vue';
-    const joke=ref("点击上面看笑话哦");
+
+    const joke = ref("点击上面看笑话哦");
 
     const get = () => {
         axios.get("https://autumnfish.cn/api/joke")
         .then(
             res => {
-                joke.value=res.data;
+                joke.value = res.data;
             }
         );
     }

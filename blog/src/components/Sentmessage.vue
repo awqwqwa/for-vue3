@@ -21,6 +21,7 @@
 </template>
 <script setup>
 import {ref} from 'vue';
+
     const title = ref("");
 
     const message = ref("");
@@ -29,8 +30,8 @@ import {ref} from 'vue';
 
     const push = () => {
         axios.post("http://jsonplaceholder.typicode.com/posts",{
-            title:title.value,
-            body:message.value,
+            title: title.value,
+            body: message.value,
             userId:1
         })
         .then(

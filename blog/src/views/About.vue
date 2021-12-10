@@ -16,9 +16,9 @@
 
 import {ref} from 'vue';
     
-    const index=ref(0);
+    const index = ref(0);
 
-    const arr=ref([
+    const arr = ref([
         {src:require("../assets/ys/56ab1b0f7bec54e77c912955ae389b504ec26a95.gif")},
         {src:require("../assets/ys/d458dfd88d1001e9730c2044af0e7bec55e797da.jpg")},
         {src:require("../assets/ys/eb167259ccbf6c816e8895a5ab3eb13532fa4052.jpg")},
@@ -35,6 +35,7 @@ import {ref} from 'vue';
     }
 
 </script>
+
 <style>
 #intro{
     position: absolute;

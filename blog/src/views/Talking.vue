@@ -21,8 +21,8 @@
 import {ref} from 'vue';
             
     const message = ref({
-        name:"",
-        contain:""
+        name: "",
+        contain: ""
     });
     
     const arr = ref([{}]);
@@ -34,8 +34,8 @@ import {ref} from 'vue';
             arr.value.push(message.value);
         }
         axios.post("http://jsonplaceholder.typicode.com/posts", {
-            title:message.value.name,
-            body:message.value.contain,
+            title: message.value.name,
+            body: message.value.contain,
             userId:1
         })
         .then(res => {
@@ -44,6 +44,7 @@ import {ref} from 'vue';
     }
 
 </script>
+
 <style>
 #lmessage input[type=text] {
     width: 42%;
