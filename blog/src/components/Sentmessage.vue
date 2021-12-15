@@ -1,6 +1,6 @@
 <template>
     <div id="upload">
-        <form>
+        <form v-if="submit">
             <label>标题：</label>
             <input type="text" v-model="title">
             <br>
@@ -9,9 +9,10 @@
             <br>
             <label>作者：</label>
             <input type="text" v-model="author" placeholder="(这个暂时没什么作用)">
-            <input type="button" @click="push" value="提交">
+            <input type="button" @click="sure" value="审阅">
         </form>
-        <div id="view1">
+        <input type="button" @click="push" value="确认提交" v-if="!submit">
+        <div id="view1" v-if="!submit">
             <h5 style="text-align: center;">{{title}}</h5>
             <pre>{{message}}</pre>
             <br>
@@ -28,6 +29,12 @@ import {ref} from 'vue';
 
     const author = ref("");
 
+    const submit = ref(true);
+
+    const sure = () => {
+        submit.value = false;
+    }
+
     const push = () => {
         axios.post("http://jsonplaceholder.typicode.com/posts",{
             title: title.value,
@@ -39,6 +46,11 @@ import {ref} from 'vue';
                 console.log(res);
             }
         )
+        alert("感谢您的提交");
+        title.value = "";
+        message.value = "";
+        author.value = "";
+        submit.value = true;
     }
 
 </script>
