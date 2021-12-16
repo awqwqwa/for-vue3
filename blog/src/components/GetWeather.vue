@@ -52,4 +52,21 @@ import {ref, getCurrentInstance} from 'vue';
 #weather {
     padding-left: 10px;
 }
+#weather input[type=text] {
+    width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 3px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#weather input[type=button]{
+    margin: 10px;
+    padding:12px;
+    width: 5%;
+    background-color: aquamarine;
+    padding: 10px 10px;
+    border-radius: 4px;
+}
 </style>

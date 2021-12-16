@@ -68,6 +68,23 @@ import {ref, defineProps} from 'vue';
     width: 18px;
     height: 18px;
 }
+#music input[type=text]{
+    width: 35%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 3px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#music input[type=button]{
+    margin: 10px;
+    padding:12px;
+    width: 15%;
+    background-color: aquamarine;
+    padding: 12px 10px;
+    border-radius: 4px;
+}
 audio{
     position: fixed;
     right:10px;

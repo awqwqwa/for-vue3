@@ -12,7 +12,11 @@
         </router-link>
         <router-link to="/about" @click="Hide">
             <h5 class="guiding" >关于我</h5>
-        </router-link>   
+        </router-link>
+        <div id="search">
+            <input type="text" v-model="searchName" placeholder="(本打算用于站内搜索，无后端服务器部署、)">
+            <button  @click="Search"><a :href="searchHttp" target="_blank">搜索</a></button>
+        </div>
     </div>
     <router-view>
     </router-view>
@@ -23,7 +27,11 @@
 <script setup>
 import {ref} from 'vue';
 import Music from './components/Music.vue';
-    const theBool=ref(true);
+    const theBool = ref(true);
+
+    const searchName = ref(""); 
+
+    const searchHttp = ref("");
 
     const Hide = () => {//使得音乐在切换时可以继续播放且显示播放器
         theBool.value = false;
@@ -33,9 +41,19 @@ import Music from './components/Music.vue';
         theBool.value = true;
     }
     
+    const Search = () => {
+        searchHttp.value = "https://www.baidu.com/s?wd=" + searchName.value;
+        console.log(searchHttp.value);
+    }
 </script>
 
 <style lang="css">
+* {
+  margin: 0; 
+  padding: 0; 
+  list-style-type: none; 
+  text-decoration: none
+}
 #pointer{
   position: -webkit-sticky;
   position: sticky;
@@ -56,5 +74,20 @@ import Music from './components/Music.vue';
 }
 .router-link-active h5{/*router-link自带类以实现点击 */
     background-color: rgb(28, 161, 161);
+}
+#search {
+    float:right;
+}
+#search input[type=text]{
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    
+}
+#search button {
+    padding: 10px;
+    margin: 5px 10px;
+    border-radius: 5px;
+    
 }
 </style>

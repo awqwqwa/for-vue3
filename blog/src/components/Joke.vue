@@ -1,6 +1,6 @@
 <template>
     <div id="joke">
-        <input type="button" value="get a joke" @click="get">
+        <input type="button" @click="get">
         <h4>{{joke}}</h4>
     </div>
 </template>
@@ -16,7 +16,7 @@ import {ref} from 'vue';
             res => {
                 joke.value = res.data;
             }
-        );
+        )
     }
 
 </script>
@@ -37,5 +37,11 @@ import {ref} from 'vue';
     color: rgba(9, 9, 231, 0.3);
     overflow: auto;
     
+}
+#joke input[type=button]{
+    width: 10px;
+    background-color: aquamarine;
+    padding: 12px 20px;
+    border-radius: 40px;
 }
 </style>

@@ -5,9 +5,9 @@
             <textarea v-model="message.contain" placeholder="留言信息"></textarea>
             <div id="view2">
                 <ul>
-                    <li v-for="data in arr" :key="data.id">
-                        <h5>{{data.name}}:</h5>
-                        <pre>{{data.contain}}</pre>
+                    <li v-for="(name) in arr" :key="name">
+                        <h5>{{name.name}}:</h5>
+                        <pre>{{name.contain}}</pre>
                         <hr>
                     </li>
                 </ul>
@@ -25,7 +25,7 @@ import {ref} from 'vue';
         contain: ""
     });
     
-    const arr = ref([{}]);
+    const arr = ref([message]);
     
     const sent = () => {
         if(message.value.name == "") {
@@ -36,7 +36,7 @@ import {ref} from 'vue';
         axios.post("http://jsonplaceholder.typicode.com/posts", {
             title: message.value.name,
             body: message.value.contain,
-            userId:1
+            userId: 1
         })
         .then(res => {
             console.log(res);
