@@ -48,29 +48,23 @@ import Music from './components/Music.vue';
 </script>
 
 <style lang="css">
-* {
-  margin: 0; 
-  padding: 0; 
-  list-style-type: none; 
-  text-decoration: none
-}
 #pointer{
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  padding: 0px;
-  margin: 0;
-  overflow: hidden;
-  background-color: rgb(90, 151, 204);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding: 0px;
+    margin: 0;
+    overflow: hidden;
+    background-color: rgb(90, 151, 204);
 }
 .guiding{
-  float:left;
-  display: block;
-  padding:20px 40px;
-  color:rgb(243, 243, 243);
+    float:left;
+    display: block;
+    padding:20px 40px;
+    color:rgb(243, 243, 243);
 }
 .guiding:hover {
-  background-color: rgb(15, 100, 134);
+    background-color: rgb(15, 100, 134);
 }
 .router-link-active h5{/*router-link自带类以实现点击 */
     background-color: rgb(28, 161, 161);
@@ -88,6 +82,16 @@ import Music from './components/Music.vue';
     padding: 10px;
     margin: 5px 10px;
     border-radius: 5px;
+    background-color: aquamarine;
     
+}
+#search button:active {
+    background-color: aqua;
+    
+}
+#search button a {
+    color: white;
+    list-style-type: none; 
+    text-decoration: none
 }
 </style>
