@@ -20,19 +20,20 @@
 
 <script setup>
 import {ref} from 'vue';
+import {reactive} from 'vue';
 
     const message = ref("这里可以输入你的备忘录");
 
     const num = ref(0);
 
-    const arr = ref([""]);
+    const arr = reactive([""]);//生成响应式数组
 
     const add = () => { 
-            arr.value.push(message);
+            arr.push(message.value);
     };
 
     const del = () => {
-            arr.value.splice(num,1);
+            arr.splice(num,1);
     }
 
 </script>
@@ -81,25 +82,5 @@ import {ref} from 'vue';
 #showlist ul li{
     padding: 2px 0px;
 }
-/*
-<script >
-export default {
-    data(){
-        return{
-            message:"这里可以输入你的备忘录",
-            num:0,
-            arr:[""],
-        }  
-    },
-    methods:{
-        add(){ 
-            this.arr.push(this.message);
-        },
-        del(){
-            this.arr.splice(this.num,1);
-        },
-    }
-}
-</script>
-*/
+
 </style>

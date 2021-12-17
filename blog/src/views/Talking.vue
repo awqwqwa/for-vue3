@@ -5,33 +5,35 @@
             <textarea v-model="message.contain" placeholder="留言信息"></textarea>
             <div id="view2">
                 <ul>
-                    <li v-for="(name) in arr" :key="name">
-                        <h5>{{name.name}}:</h5>
-                        <pre>{{name.contain}}</pre>
+                    <li v-for="data in arr" :key="data">
+                        <h5>{{data.name}}:</h5>
+                        <pre>{{data.contain}}</pre>
                         <hr>
                     </li>
                 </ul>
             </div>
         </div>
         <input type="button" value="留言" @click="sent">
-
     </div>
+
 </template>
+
 <script setup>
 import {ref} from 'vue';
+import {reactive} from 'vue';
             
     const message = ref({
         name: "",
         contain: ""
     });
     
-    const arr = ref([message]);
+    const arr = reactive([{}]);
     
     const sent = () => {
         if(message.value.name == "") {
             alert("请输入用户名")
         }else {
-            arr.value.push(message.value);
+            arr.push(message.value);
         }
         axios.post("http://jsonplaceholder.typicode.com/posts", {
             title: message.value.name,
